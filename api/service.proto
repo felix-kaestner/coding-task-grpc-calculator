@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+option go_package = "github.com/felix-kaestner/calculator/internal/pkg/proto";
+
+// Method defines the mathematical operator to be used.
+// Currently only addition, subtraction, multiplication 
+// and division are supported.
+enum Method {
+  ADD = 0;
+  SUB = 1;
+  MUL = 2;
+  DIV = 3;
+}
+
+// The request message containing the mathematical method operator 
+// and the two operands to which the operator should be applied.
+// The order of the operands is important, meaning that operandA
+// is always the left-hand side of the operator and operandB
+// is always the right-hand side.
+message Request {
+  Method method = 1;
+  double operandA = 2;
+  double operandB = 3;
+}
+
+// The response message containing either the result value or a error message.
+message Response {
+  double result = 1;
+}
+
+// The calculator service definition.
+service Calculator {
+  // Sends a mathematical operation to the server and returns the result.
+  // Currently, only single mathematical operations with two operands are supported.
+  rpc solve (Request) returns (Response) {}
+}
