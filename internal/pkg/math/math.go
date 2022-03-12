@@ -14,10 +14,9 @@ var ErrDivisionByZero = errors.New("division by zero")
 // operator is unsupported or invalid.
 var ErrInvalidMethod = errors.New("invalid method")
 
-// Implement the Operator interface for different mathemtical methods.
 // Solve computes the result of applying the mathematical method m
-// to the two operands a and b returning the result or an error is the
-// operation is invalid.
+// to the two operands a and b returning the result or an error if
+// the operation is invalid.
 func Solve(m proto.Method, a float64, b float64) (float64, error) {
 	switch m {
 	case proto.Method_ADD:

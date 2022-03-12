@@ -21,12 +21,13 @@ Options:`
 )
 
 var (
-	host = flag.String("host", "localhost:8000", "The address of the gRPC server.")
+	host = flag.String("host", "localhost:8000", "The host address of the gRPC server.")
 	m    = flag.String("method", "", "The method to use, [Available methods: 'add', 'sub', 'mul', 'div']")
 	a    = flag.Float64("a", 0, "The left-hand side operand.")
 	b    = flag.Float64("b", 0, "The right-hand side operand")
 )
 
+// isFlagPassed checks if all provided flags are passed.
 func isFlagPassed(flags ...string) bool {
 	found := false
 	flag.Visit(func(f *flag.Flag) {
