@@ -4,7 +4,6 @@ import (
 	"context"
 	"flag"
 	"fmt"
-	"log"
 	"os"
 
 	"github.com/felix-kaestner/calculator/internal/app/client"
@@ -52,7 +51,8 @@ func main() {
 
 	r, err := client.Solve(context.Background(), *host, *m, *a, *b)
 	if err != nil {
-		log.Fatalf("error: %v", err)
+		fmt.Printf("error: %v\n", err)
+		os.Exit(1)
 	}
 	fmt.Println(r)
 }
